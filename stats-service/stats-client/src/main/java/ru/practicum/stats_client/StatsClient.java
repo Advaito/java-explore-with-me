@@ -75,4 +75,5 @@ public class StatsClient extends BaseClient {
 
         return get(uriBuilder.toString(), parameters);
     }
+
 }
