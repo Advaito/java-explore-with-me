@@ -18,11 +18,11 @@ public class BaseClient {
     }
 
     protected <T> ResponseEntity<Object> post(String path, T body) {
-        return makeAndSendRequest(POST, path, null, body);
+        return makeAndSendRequest(HttpMethod.POST, path, null, body);
     }
 
     protected ResponseEntity<Object> get(String path, @Nullable Map<String, Object> parameters) {
-        return makeAndSendRequest(GET, path, parameters, null);
+        return makeAndSendRequest(HttpMethod.GET, path, parameters, null);
     }
 
     private <T> ResponseEntity<Object> makeAndSendRequest(HttpMethod method, String path,
