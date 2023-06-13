@@ -31,6 +31,7 @@ import java.util.stream.Collectors;
 @Transactional(readOnly = true)
 @Slf4j
 public class RequestServiceImpl implements RequestService {
+
     private final UserService userService;
     private final EventService eventService;
     private final StatsService statsService;
@@ -196,4 +197,3 @@ public class RequestServiceImpl implements RequestService {
         }
     }
 }
-

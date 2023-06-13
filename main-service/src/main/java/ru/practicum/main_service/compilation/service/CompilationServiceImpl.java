@@ -23,6 +23,7 @@ import java.util.*;
 @Transactional(readOnly = true)
 @Slf4j
 public class CompilationServiceImpl implements CompilationService {
+
     private final EventService eventService;
     private final CompilationRepository compilationRepository;
     private final CompilationMapper compilationMapper;

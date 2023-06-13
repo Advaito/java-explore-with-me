@@ -20,6 +20,7 @@ import java.util.List;
 @RequestMapping("/users/{userId}/events")
 @Validated
 public class EventPrivateController {
+
     private final EventService eventService;
     private final RequestService requestService;
 

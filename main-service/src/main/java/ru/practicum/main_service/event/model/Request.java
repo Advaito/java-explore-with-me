@@ -19,6 +19,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class Request {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;

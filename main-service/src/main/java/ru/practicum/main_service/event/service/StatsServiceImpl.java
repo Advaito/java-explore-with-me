@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
 @Transactional(readOnly = true)
 @Slf4j
 public class StatsServiceImpl implements StatsService {
+
     private final StatsClient statsClient;
     private final RequestRepository requestRepository;
     private final ObjectMapper mapper = new ObjectMapper();

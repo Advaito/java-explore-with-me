@@ -65,4 +65,3 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(() -> new NotFoundException("Пользователя с таким id не существует."));
     }
 }
-

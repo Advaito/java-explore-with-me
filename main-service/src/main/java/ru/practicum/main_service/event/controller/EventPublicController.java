@@ -22,6 +22,7 @@ import java.util.List;
 @RequestMapping("/events")
 @Validated
 public class EventPublicController {
+
     private final EventService eventService;
 
     @GetMapping

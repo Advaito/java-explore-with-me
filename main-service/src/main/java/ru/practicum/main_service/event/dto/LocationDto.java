@@ -14,6 +14,7 @@ import java.util.Objects;
 @ToString
 @Builder
 public class LocationDto {
+
     @NotNull
     Float lat;
 

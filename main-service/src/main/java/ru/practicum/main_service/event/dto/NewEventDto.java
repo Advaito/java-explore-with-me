@@ -20,6 +20,7 @@ import java.time.LocalDateTime;
 @ToString
 @Builder
 public class NewEventDto {
+
     @NotBlank
     @Size(min = MainCommonUtils.MIN_LENGTH_ANNOTATION, max = MainCommonUtils.MAX_LENGTH_ANNOTATION)
     String annotation;

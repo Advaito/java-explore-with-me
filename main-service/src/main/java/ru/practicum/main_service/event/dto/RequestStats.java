@@ -10,6 +10,7 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @Builder
 public class RequestStats {
+
     Long eventId;
     Long confirmedRequests;
 }

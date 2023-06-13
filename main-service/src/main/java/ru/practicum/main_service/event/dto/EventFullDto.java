@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 public class EventFullDto {
+
     String annotation;
     CategoryDto category;
     Long confirmedRequests;

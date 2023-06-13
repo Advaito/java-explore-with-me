@@ -16,6 +16,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @Builder
 public class ParticipationRequestDto {
+
     Long id;
     Long event;
     Long requester;

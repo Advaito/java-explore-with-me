@@ -13,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class CompilationDto {
+
     Long id;
     String title;
     Boolean pinned;

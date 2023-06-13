@@ -16,6 +16,7 @@ import java.util.List;
 @ToString
 @Builder
 public class EventRequestStatusUpdateRequest {
+
     @NotEmpty
     List<Long> requestIds;
 

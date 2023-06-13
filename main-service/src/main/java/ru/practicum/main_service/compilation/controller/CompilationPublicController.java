@@ -18,6 +18,7 @@ import java.util.List;
 @RequestMapping("/compilations")
 @Validated
 public class CompilationPublicController {
+
     private final CompilationService compilationService;
 
     @GetMapping
@@ -35,4 +36,3 @@ public class CompilationPublicController {
         return compilationService.getById(compId);
     }
 }
-
