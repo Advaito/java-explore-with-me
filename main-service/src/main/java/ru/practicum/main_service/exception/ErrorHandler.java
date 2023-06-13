@@ -13,6 +13,7 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import ru.practicum.main_service.MainCommonUtils;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.ValidationException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.time.LocalDateTime;
@@ -44,7 +45,7 @@ public class ErrorHandler {
                 LocalDateTime.now().format(MainCommonUtils.DT_FORMATTER));
     }
 
-    @ExceptionHandler({MethodArgumentTypeMismatchException.class, ConstraintViolationException.class})
+    @ExceptionHandler({MethodArgumentTypeMismatchException.class, ConstraintViolationException.class, ValidationException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiError handleValidationException(final RuntimeException exception) {
         log.error(exception.toString());
