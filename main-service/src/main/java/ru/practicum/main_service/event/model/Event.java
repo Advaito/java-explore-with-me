@@ -10,6 +10,7 @@ import ru.practicum.main_service.event.enums.EventState;
 import ru.practicum.main_service.user.model.User;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Entity
@@ -27,6 +28,7 @@ public class Event {
     Long id;
 
     @Column(nullable = false, length = MainCommonUtils.MAX_LENGTH_TITLE)
+    @Size(max = 50)
     String title;
 
     @Column(nullable = false, length = MainCommonUtils.MAX_LENGTH_ANNOTATION)
