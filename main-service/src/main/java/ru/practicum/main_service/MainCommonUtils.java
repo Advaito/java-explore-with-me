@@ -13,6 +13,6 @@ public class MainCommonUtils {
     public static final int MIN_LENGTH_DESCRIPTION = 20;
     public static final int MAX_LENGTH_DESCRIPTION = 7000;
     public static final int MIN_LENGTH_TITLE = 3;
-    public static final int MAX_LENGTH_TITLE = 50;
+    public static final int MAX_LENGTH_TITLE = 120;
 
 }

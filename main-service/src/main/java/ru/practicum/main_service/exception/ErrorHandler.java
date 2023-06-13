@@ -67,10 +67,10 @@ public class ErrorHandler {
     }
 
     @ExceptionHandler(DataIntegrityViolationException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseStatus(HttpStatus.CONFLICT)
     public ApiError handleDataIntegrityViolationException(final DataIntegrityViolationException exception) {
         log.error(exception.toString());
-        return new ApiError(HttpStatus.BAD_REQUEST.name(),
+        return new ApiError(HttpStatus.CONFLICT.name(),
                 "Integrity constraint has been violated.",
                 exception.getMessage(),
                 getErrors(exception),
