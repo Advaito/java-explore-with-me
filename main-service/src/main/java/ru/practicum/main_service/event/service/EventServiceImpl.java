@@ -22,6 +22,7 @@ import ru.practicum.main_service.user.model.User;
 import ru.practicum.main_service.user.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.ValidationException;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -348,14 +349,14 @@ public class EventServiceImpl implements EventService {
 
     private void checkStartIsBeforeEnd(LocalDateTime rangeStart, LocalDateTime rangeEnd) {
         if (rangeStart != null && rangeEnd != null && rangeStart.isAfter(rangeEnd)) {
-            throw new ForbiddenException(String.format("Field: eventDate. Error: некорректные параметры временного " +
+            throw new ValidationException(String.format("Field: eventDate. Error: некорректные параметры временного " +
                     "интервала. Value: rangeStart = %s, rangeEnd = %s", rangeStart, rangeEnd));
         }
     }
 
     private void checkNewEventDate(LocalDateTime newEventDate, LocalDateTime minTimeBeforeEventStart) {
         if (newEventDate != null && newEventDate.isBefore(minTimeBeforeEventStart)) {
-            throw new ForbiddenException(String.format("Field: eventDate. Error: остается слишком мало времени для " +
+            throw new ValidationException(String.format("Field: eventDate. Error: остается слишком мало времени для " +
                     "подготовки. Value: %s", newEventDate));
         }
     }

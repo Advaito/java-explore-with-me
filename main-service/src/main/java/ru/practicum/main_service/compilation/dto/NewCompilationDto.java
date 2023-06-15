@@ -19,7 +19,7 @@ import java.util.List;
 public class NewCompilationDto {
 
     @NotBlank
-    @Size(min = MainCommonUtils.MIN_LENGTH_TITLE, max = MainCommonUtils.MAX_LENGTH_TITLE)
+    @Size(min = MainCommonUtils.MIN_LENGTH_TITLE, max = 50)
     String title;
 
     Boolean pinned = false;

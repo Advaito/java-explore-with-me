@@ -8,6 +8,7 @@ import ru.practicum.main_service.MainCommonUtils;
 import ru.practicum.main_service.event.model.Event;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -24,7 +25,8 @@ public class Compilation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(nullable = false, length = MainCommonUtils.MAX_LENGTH_TITLE, unique = true)
+    @Column(nullable = false, unique = true)
+    @Size(max = MainCommonUtils.MAX_LENGTH_TITLE)
     String title;
 
     @Column(nullable = false)
