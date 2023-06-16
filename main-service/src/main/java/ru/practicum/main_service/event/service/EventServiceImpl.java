@@ -20,7 +20,6 @@ import ru.practicum.main_service.exception.ForbiddenException;
 import ru.practicum.main_service.exception.NotFoundException;
 import ru.practicum.main_service.user.model.User;
 import ru.practicum.main_service.user.service.UserService;
-import ru.practicum.stats_common.model.ViewStats;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ValidationException;
@@ -279,8 +278,7 @@ public class EventServiceImpl implements EventService {
         }
 
         statsService.addHit(request);
-        EventFullDto eventFullDto = toEventFullDto(event);
-        eventFullDto.setViews(statsService.getViewsCount(eventId, (List<ViewStats>) statsService.getViewStats(Set.of(eventId))));
+
         return toEventFullDto(event);
     }
 

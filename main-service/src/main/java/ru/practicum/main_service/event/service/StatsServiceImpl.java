@@ -113,42 +113,4 @@ public class StatsServiceImpl implements StatsService {
                 .collect(Collectors.toList());
     }
 
-    public Long getViewsCount(Long eventId, List<ViewStats> viewStatsList) {
-        if (viewStatsList != null && !viewStatsList.isEmpty()) {
-            ViewStats viewStats = viewStatsList.stream()
-                    .filter(viewStatsDto -> isEventHasViewStats(eventId, viewStatsDto))
-                    .findFirst().orElse(null);
-            if (viewStats != null) {
-                return viewStats.getHits();
-            } else {
-                return 0L;
-            }
-        } else {
-            return 0L;
-        }
-    }
-
-    public Object getViewStats(Set<Long> eventIds) {
-        return statsClient.getStats(
-                LocalDateTime.of(2023, 01, 01, 00, 00, 00),
-                LocalDateTime.now(),
-                getUris(eventIds),
-                true).getBody();
-    }
-
-    private List<String> getUris(Set<Long> eventIds) {
-        List<String> urisList = new ArrayList<>(eventIds.size());
-        String baseUrl = "/events/";
-        for (Long eventId : eventIds) {
-            urisList.add(baseUrl + eventId);
-        }
-        return urisList;
-    }
-
-    private boolean isEventHasViewStats(Long eventId, ViewStats viewStats) {
-        String[] segments = viewStats.getUri().split("/");
-        String idStr = segments[segments.length - 1];
-        Long id = Long.parseLong(idStr);
-        return eventId.equals(id);
-    }
 }

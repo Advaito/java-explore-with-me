@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public interface StatsService {
     void addHit(HttpServletRequest request);
@@ -18,7 +17,4 @@ public interface StatsService {
 
     Map<Long, Long> getConfirmedRequests(List<Event> events);
 
-    Long getViewsCount(Long eventId, List<ViewStats> viewStatsList);
-
-    Object getViewStats(Set<Long> eventIds);
 }
