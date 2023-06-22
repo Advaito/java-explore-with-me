@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.main_service.MainCommonUtils;
+import ru.practicum.main_service.utils.MainCommonUtils;
 import ru.practicum.main_service.event.model.Event;
 import ru.practicum.main_service.event.repository.RequestRepository;
 import ru.practicum.stats_client.StatsClient;

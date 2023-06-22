@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
-import ru.practicum.main_service.MainCommonUtils;
+import ru.practicum.main_service.utils.MainCommonUtils;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.ValidationException;

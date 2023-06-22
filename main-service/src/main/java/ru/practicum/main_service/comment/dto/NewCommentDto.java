@@ -1,4 +1,4 @@
-package ru.practicum.main_service.compilation.dto;
+package ru.practicum.main_service.comment.dto;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -6,8 +6,6 @@ import ru.practicum.main_service.utils.MainCommonUtils;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
-import java.util.List;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
@@ -16,12 +14,9 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 @Builder
-public class NewCompilationDto {
+public class NewCommentDto {
 
     @NotBlank
-    @Size(min = MainCommonUtils.MIN_LENGTH_TITLE, max = 50)
-    String title;
-
-    Boolean pinned = false;
-    List<Long> events = new ArrayList<>();
+    @Size(min = MainCommonUtils.MIN_LENGTH_COMMENT, max = MainCommonUtils.MAX_LENGTH_COMMENT)
+    String text;
 }

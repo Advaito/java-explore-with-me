@@ -1,4 +1,4 @@
-package ru.practicum.main_service;
+package ru.practicum.main_service.utils;
 
 import java.time.format.DateTimeFormatter;
 
@@ -14,5 +14,7 @@ public class MainCommonUtils {
     public static final int MAX_LENGTH_DESCRIPTION = 7000;
     public static final int MIN_LENGTH_TITLE = 3;
     public static final int MAX_LENGTH_TITLE = 120;
+    public static final int MIN_LENGTH_COMMENT = 3;
+    public static final int MAX_LENGTH_COMMENT = 7000;
 
 }

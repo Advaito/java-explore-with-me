@@ -3,7 +3,7 @@ package ru.practicum.main_service.event.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import ru.practicum.main_service.MainCommonUtils;
+import ru.practicum.main_service.utils.MainCommonUtils;
 import ru.practicum.main_service.event.enums.EventStateAction;
 
 import javax.validation.Valid;
