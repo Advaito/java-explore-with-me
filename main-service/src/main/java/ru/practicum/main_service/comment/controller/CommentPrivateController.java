@@ -5,7 +5,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.main_service.utils.MainCommonUtils;
 import ru.practicum.main_service.comment.dto.CommentDto;
 import ru.practicum.main_service.comment.dto.NewCommentDto;
 import ru.practicum.main_service.comment.service.CommentService;
@@ -14,6 +13,9 @@ import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 import java.util.List;
+
+import static ru.practicum.main_service.utils.MainCommonUtils.PAGE_DEFAULT_FROM;
+import static ru.practicum.main_service.utils.MainCommonUtils.PAGE_DEFAULT_SIZE;
 
 @RestController
 @RequiredArgsConstructor
@@ -50,8 +52,8 @@ public class CommentPrivateController {
     public List<CommentDto> getCommentsByPrivate(
             @PathVariable Long userId,
             @RequestParam(required = false) Long eventId,
-            @RequestParam(required = false, defaultValue = MainCommonUtils.PAGE_DEFAULT_FROM) @PositiveOrZero Integer from,
-            @RequestParam(required = false, defaultValue = MainCommonUtils.PAGE_DEFAULT_SIZE) @Positive Integer size) {
+            @RequestParam(required = false, defaultValue = PAGE_DEFAULT_FROM) @PositiveOrZero Integer from,
+            @RequestParam(required = false, defaultValue = PAGE_DEFAULT_SIZE) @Positive Integer size) {
         return commentService.getCommentsByPrivate(userId, eventId, PageRequest.of(from / size, size));
     }
 }

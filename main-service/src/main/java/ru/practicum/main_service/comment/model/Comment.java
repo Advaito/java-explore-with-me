@@ -4,12 +4,13 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import ru.practicum.main_service.utils.MainCommonUtils;
 import ru.practicum.main_service.event.model.Event;
 import ru.practicum.main_service.user.model.User;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+
+import static ru.practicum.main_service.utils.MainCommonUtils.MAX_LENGTH_COMMENT;
 
 @Entity
 @Table(name = "comments", schema = "public")
@@ -25,7 +26,7 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(length = MainCommonUtils.MAX_LENGTH_COMMENT, nullable = false)
+    @Column(length = MAX_LENGTH_COMMENT, nullable = false)
     String text;
 
     @ManyToOne(fetch = FetchType.EAGER)

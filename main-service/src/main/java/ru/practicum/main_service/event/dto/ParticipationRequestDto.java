@@ -3,11 +3,12 @@ package ru.practicum.main_service.event.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import ru.practicum.main_service.utils.MainCommonUtils;
 import ru.practicum.main_service.event.enums.RequestStatus;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+
+import static ru.practicum.main_service.utils.MainCommonUtils.DT_FORMAT;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
@@ -21,7 +22,7 @@ public class ParticipationRequestDto {
     Long event;
     Long requester;
 
-    @JsonFormat(pattern = MainCommonUtils.DT_FORMAT, shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern = DT_FORMAT, shape = JsonFormat.Shape.STRING)
     LocalDateTime created;
 
     RequestStatus status;

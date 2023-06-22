@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.practicum.main_service.utils.MainCommonUtils;
 import ru.practicum.main_service.event.model.Event;
 import ru.practicum.main_service.event.repository.RequestRepository;
 import ru.practicum.stats_client.StatsClient;
@@ -18,6 +17,8 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
+
+import static ru.practicum.main_service.utils.MainCommonUtils.DT_FORMATTER;
 
 @Service
 @RequiredArgsConstructor
@@ -37,7 +38,7 @@ public class StatsServiceImpl implements StatsService {
         log.info("Отправлен запрос на регистрацию обращения к серверу статистики с параметрами request = {}", request);
 
         statsClient.addHit(appName, request.getRequestURI(), request.getRemoteAddr(),
-                LocalDateTime.parse(LocalDateTime.now().format(MainCommonUtils.DT_FORMATTER), MainCommonUtils.DT_FORMATTER));
+                LocalDateTime.parse(LocalDateTime.now().format(DT_FORMATTER), DT_FORMATTER));
     }
 
     @Override

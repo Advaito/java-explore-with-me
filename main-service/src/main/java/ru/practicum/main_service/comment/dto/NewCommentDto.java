@@ -2,10 +2,12 @@ package ru.practicum.main_service.comment.dto;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import ru.practicum.main_service.utils.MainCommonUtils;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+import static ru.practicum.main_service.utils.MainCommonUtils.MAX_LENGTH_COMMENT;
+import static ru.practicum.main_service.utils.MainCommonUtils.MIN_LENGTH_COMMENT;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
@@ -17,6 +19,6 @@ import javax.validation.constraints.Size;
 public class NewCommentDto {
 
     @NotBlank
-    @Size(min = MainCommonUtils.MIN_LENGTH_COMMENT, max = MainCommonUtils.MAX_LENGTH_COMMENT)
+    @Size(min = MIN_LENGTH_COMMENT, max = MAX_LENGTH_COMMENT)
     String text;
 }

@@ -2,10 +2,11 @@ package ru.practicum.main_service.compilation.dto;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import ru.practicum.main_service.utils.MainCommonUtils;
 
 import javax.validation.constraints.Size;
 import java.util.List;
+
+import static ru.practicum.main_service.utils.MainCommonUtils.MIN_LENGTH_TITLE;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
@@ -16,7 +17,7 @@ import java.util.List;
 @Builder
 public class UpdateCompilationRequest {
 
-    @Size(min = MainCommonUtils.MIN_LENGTH_TITLE, max = 50)
+    @Size(min = MIN_LENGTH_TITLE, max = 50)
     String title;
 
     Boolean pinned;
