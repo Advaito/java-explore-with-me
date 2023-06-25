@@ -5,7 +5,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.main_service.MainCommonUtils;
 import ru.practicum.main_service.event.dto.EventFullDto;
 import ru.practicum.main_service.event.dto.UpdateEventAdminRequest;
 import ru.practicum.main_service.event.enums.EventState;
@@ -16,6 +15,8 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 import java.time.LocalDateTime;
 import java.util.List;
+
+import static ru.practicum.main_service.utils.MainCommonUtils.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -31,10 +32,10 @@ public class EventAdminController {
             @RequestParam(required = false) List<Long> users,
             @RequestParam(required = false) List<EventState> states,
             @RequestParam(required = false) List<Long> categories,
-            @RequestParam(required = false) @DateTimeFormat(pattern = MainCommonUtils.DT_FORMAT) LocalDateTime rangeStart,
-            @RequestParam(required = false) @DateTimeFormat(pattern = MainCommonUtils.DT_FORMAT) LocalDateTime rangeEnd,
-            @RequestParam(required = false, defaultValue = MainCommonUtils.PAGE_DEFAULT_FROM) @PositiveOrZero Integer from,
-            @RequestParam(required = false, defaultValue = MainCommonUtils.PAGE_DEFAULT_SIZE) @Positive Integer size) {
+            @RequestParam(required = false) @DateTimeFormat(pattern = DT_FORMAT) LocalDateTime rangeStart,
+            @RequestParam(required = false) @DateTimeFormat(pattern = DT_FORMAT) LocalDateTime rangeEnd,
+            @RequestParam(required = false, defaultValue = PAGE_DEFAULT_FROM) @PositiveOrZero Integer from,
+            @RequestParam(required = false, defaultValue = PAGE_DEFAULT_SIZE) @Positive Integer size) {
         return eventService.getEventsByAdmin(users, states, categories, rangeStart, rangeEnd, from, size);
     }
 

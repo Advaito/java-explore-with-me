@@ -4,12 +4,13 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import ru.practicum.main_service.MainCommonUtils;
 import ru.practicum.main_service.event.model.Event;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.List;
+
+import static ru.practicum.main_service.utils.MainCommonUtils.MAX_LENGTH_TITLE;
 
 @Entity
 @Table(name = "compilations", schema = "public")
@@ -26,7 +27,7 @@ public class Compilation {
     Long id;
 
     @Column(nullable = false, unique = true)
-    @Size(max = MainCommonUtils.MAX_LENGTH_TITLE)
+    @Size(max = MAX_LENGTH_TITLE)
     String title;
 
     @Column(nullable = false)

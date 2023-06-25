@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
-import ru.practicum.main_service.MainCommonUtils;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.ValidationException;
@@ -18,6 +17,8 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.time.LocalDateTime;
 import java.util.Objects;
+
+import static ru.practicum.main_service.utils.MainCommonUtils.DT_FORMATTER;
 
 @RestControllerAdvice
 @Slf4j
@@ -42,7 +43,7 @@ public class ErrorHandler {
                 String.format("Field: %s. Error: %s", Objects.requireNonNull(exception.getFieldError()).getField(),
                         exception.getFieldError().getDefaultMessage()),
                 getErrors(exception),
-                LocalDateTime.now().format(MainCommonUtils.DT_FORMATTER));
+                LocalDateTime.now().format(DT_FORMATTER));
     }
 
     @ExceptionHandler({MethodArgumentTypeMismatchException.class, ConstraintViolationException.class, ValidationException.class})
@@ -53,7 +54,7 @@ public class ErrorHandler {
                 "Incorrectly made request.",
                 exception.getMessage(),
                 getErrors(exception),
-                LocalDateTime.now().format(MainCommonUtils.DT_FORMATTER));
+                LocalDateTime.now().format(DT_FORMATTER));
     }
 
     @ExceptionHandler(NotFoundException.class)
@@ -64,7 +65,7 @@ public class ErrorHandler {
                 "The required object was not found.",
                 exception.getMessage(),
                 getErrors(exception),
-                LocalDateTime.now().format(MainCommonUtils.DT_FORMATTER));
+                LocalDateTime.now().format(DT_FORMATTER));
     }
 
     @ExceptionHandler(DataIntegrityViolationException.class)
@@ -75,7 +76,7 @@ public class ErrorHandler {
                 "Integrity constraint has been violated.",
                 exception.getMessage(),
                 getErrors(exception),
-                LocalDateTime.now().format(MainCommonUtils.DT_FORMATTER));
+                LocalDateTime.now().format(DT_FORMATTER));
     }
 
     @ExceptionHandler(ForbiddenException.class)
@@ -86,7 +87,7 @@ public class ErrorHandler {
                 "For the requested operation the conditions are not met.",
                 exception.getMessage(),
                 getErrors(exception),
-                LocalDateTime.now().format(MainCommonUtils.DT_FORMATTER));
+                LocalDateTime.now().format(DT_FORMATTER));
     }
 
     @ExceptionHandler
@@ -97,7 +98,7 @@ public class ErrorHandler {
                 "Unhandled exception.",
                 exception.getMessage(),
                 getErrors(exception),
-                LocalDateTime.now().format(MainCommonUtils.DT_FORMATTER));
+                LocalDateTime.now().format(DT_FORMATTER));
     }
 
     private String getErrors(Exception exception) {

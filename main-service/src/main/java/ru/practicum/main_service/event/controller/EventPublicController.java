@@ -5,7 +5,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.main_service.MainCommonUtils;
 import ru.practicum.main_service.event.dto.EventFullDto;
 import ru.practicum.main_service.event.dto.EventShortDto;
 import ru.practicum.main_service.event.enums.EventSortType;
@@ -16,6 +15,8 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 import java.time.LocalDateTime;
 import java.util.List;
+
+import static ru.practicum.main_service.utils.MainCommonUtils.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -31,12 +32,12 @@ public class EventPublicController {
             @RequestParam(required = false) String text,
             @RequestParam(required = false) List<Long> categories,
             @RequestParam(required = false) Boolean paid,
-            @RequestParam(required = false) @DateTimeFormat(pattern = MainCommonUtils.DT_FORMAT) LocalDateTime rangeStart,
-            @RequestParam(required = false) @DateTimeFormat(pattern = MainCommonUtils.DT_FORMAT) LocalDateTime rangeEnd,
+            @RequestParam(required = false) @DateTimeFormat(pattern = DT_FORMAT) LocalDateTime rangeStart,
+            @RequestParam(required = false) @DateTimeFormat(pattern = DT_FORMAT) LocalDateTime rangeEnd,
             @RequestParam(required = false, defaultValue = "false") Boolean onlyAvailable,
             @RequestParam(required = false) EventSortType sort,
-            @RequestParam(required = false, defaultValue = MainCommonUtils.PAGE_DEFAULT_FROM) @PositiveOrZero Integer from,
-            @RequestParam(required = false, defaultValue = MainCommonUtils.PAGE_DEFAULT_SIZE) @Positive Integer size,
+            @RequestParam(required = false, defaultValue = PAGE_DEFAULT_FROM) @PositiveOrZero Integer from,
+            @RequestParam(required = false, defaultValue = PAGE_DEFAULT_SIZE) @Positive Integer size,
             HttpServletRequest request) {
         return eventService.getEventsByPublic(text, categories, paid, rangeStart, rangeEnd, onlyAvailable,
                 sort, from, size, request);
